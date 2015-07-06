@@ -30,7 +30,7 @@
           return;
         }
 
-        button.on('click', function() {
+        button.on('click.accordion', function() {
           root.call(accordion.toggle);
           d3.event.preventDefault();
         });
