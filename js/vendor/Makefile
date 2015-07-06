@@ -10,7 +10,9 @@ all: \
 	d3.min.js \
 	formdb.min.js \
 	querystring.min.js \
-	tagalong.min.js
+	tagalong.min.js \
+	select2.min.js \
+	css/select2.min.css
 
 # install node modules
 node_modules:
@@ -20,12 +22,19 @@ node_modules:
 querystring.js: node_modules
 	echo "window.querystring = require('querystring');" | $(bin)/browserify - > $@
 
-jquery.min.js:
-	curl -O http://code.jquery.com/jquery.min.js
-
 # document-register-element is a lightweight custom elements polyfill
 document-register-element.js: node_modules
 	cp node_modules/document-register-element/build/document-register-element.max.js $@
+
+jquery.min.js:
+	curl -O http://code.jquery.com/jquery.min.js
+
+select2.min.js:
+	cp node_modules/select2/dist/js/select2.min.js $@
+
+css/select2.min.css:
+	mkdir $(dir $@)
+	cp node_modules/select2/dist/css/select2.min.css $@
 
 # this handy target minifies any scripts that are either built using browserify
 # or are distributed as un-minified browser builds
