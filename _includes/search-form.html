@@ -107,9 +107,22 @@
       </h1>
       <div id="major-content">
 
-        <label for="major">Specify a major or degree
-          <input id="major" name="major" type="text" placeholder="Type a major" {{ common_input_attributes }}>
-        </label>
+        <div class="picc-multivalue">
+          <label for="major">Specify a major or degree
+            <select id="major" name="major">
+              <option value="">(Any)</option>
+              <option value="B">Bachelors</option>
+              <option value="A">Associates</option>
+              <option value="C">Certificate</option>
+            </select>
+          </label>
+
+          <div class="group_inline-right">
+            <button class="button button-add" data-input="major">
+              Add Major
+            </button>
+          </div>
+        </div>
 
         <label for="major-type">Select a type of degree
           <select id="major-type" name="major_type">
