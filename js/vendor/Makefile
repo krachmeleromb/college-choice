@@ -5,6 +5,7 @@ bin ?= ./node_modules/.bin
 # note: any *.min.js file that isn't distributed with its module can be built
 # with UglifyJS in the `%.min.js` target
 all: \
+	jquery.min.js \
 	aight.min.js \
 	d3.min.js \
 	formdb.min.js \
@@ -18,6 +19,9 @@ node_modules:
 # querystring is a Node.js built-in, but we can build it with browserify
 querystring.js: node_modules
 	echo "window.querystring = require('querystring');" | $(bin)/browserify - > $@
+
+jquery.min.js:
+	curl -O http://code.jquery.com/jquery.min.js
 
 # document-register-element is a lightweight custom elements polyfill
 document-register-element.js: node_modules
