@@ -12,7 +12,7 @@ all: \
 	querystring.min.js \
 	tagalong.min.js \
 	select2.min.js \
-	css/select2.min.css
+	select2-css
 
 # install node modules
 node_modules:
@@ -32,9 +32,8 @@ jquery.min.js:
 select2.min.js:
 	cp node_modules/select2/dist/js/select2.min.js $@
 
-css/select2.min.css:
-	mkdir $(dir $@)
-	cp node_modules/select2/dist/css/select2.min.css $@
+select2-css:
+	cp node_modules/select2/dist/css/*.css ../../css/vendor/
 
 # this handy target minifies any scripts that are either built using browserify
 # or are distributed as un-minified browser builds
