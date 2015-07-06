@@ -14,6 +14,8 @@ sass:
 
 # common site scripts, relative to `{{ site.baseurl }}/js/`
 scripts:
+  - vendor/jquery.min.js
+  - vendor/select2.min.js
   - vendor/aight.min.js
   - vendor/d3.min.js
   - vendor/querystring.min.js
@@ -21,6 +23,11 @@ scripts:
   - components/picc-accordion.js
   - components/picc-multivalue.js
   - api.js
+  - site.js
+
+stylesheets:
+  - vendor/select2.min.css
+  - styles.css
 
 # API configuration
 api:
