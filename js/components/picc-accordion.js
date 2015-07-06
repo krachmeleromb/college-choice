@@ -121,14 +121,4 @@
     return accordion;
   };
 
-
-  window.addEventListener('load', function() {
-    d3.selectAll('.picc-accordion')
-      .call(picc.accordion())
-      .on('open', function() {
-        var af = this.querySelector('[autofocus]');
-        if (af) af.focus();
-      });
-  });
-
 })(this);
