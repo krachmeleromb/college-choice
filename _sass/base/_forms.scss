@@ -70,6 +70,18 @@ select[multiple=multiple] {
     box-shadow: $form-box-shadow-focus;
     outline: none;
   }
+
+  &.select2-search__field {
+    margin-bottom: 0;
+    padding: 4px 0;
+    min-width: 4em;
+
+    &:hover,
+    &:focus {
+      border: none;
+      box-shadow: none;
+    }
+  }
 }
 
 textarea {
