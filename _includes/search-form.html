@@ -43,11 +43,10 @@
 
       <div id="location-content">
 
-        <div class="input-add group_inline picc-multivalue">
+        <div class="input-add group_inline">
 
           <label for="select-state" class="group_inline-left">Select a state
-            <select id="select-state" name="state">
-              <option value=""></option>
+            <select id="select-state" name="state" multiple="multiple">
               {% for state in site.data.states|sort('name') %}
               <option value="{{ state.abbr }}">{{ state.name }}</option>
               {% endfor %}
@@ -55,11 +54,13 @@
             </select>
           </label>
 
+          <!--
           <div class="group_inline-right">
             <button class="button button-add" data-input="state">
               Add State
             </button>
           </div>
+          -->
 
         </div>
 
@@ -109,19 +110,20 @@
 
         <div class="picc-multivalue">
           <label for="major">Specify a major or degree
-            <select id="major" name="major">
-              <option value="">(Any)</option>
+            <select id="major" name="major" multiple="multiple">
               <option value="B">Bachelors</option>
               <option value="A">Associates</option>
               <option value="C">Certificate</option>
             </select>
           </label>
 
+          <!--
           <div class="group_inline-right">
             <button class="button button-add" data-input="major">
               Add Major
             </button>
           </div>
+          -->
         </div>
 
         <label for="major-type">Select a type of degree
