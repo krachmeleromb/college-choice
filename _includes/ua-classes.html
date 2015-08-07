@@ -1,0 +1,10 @@
+<script>
+(function(body, ua) {
+  var mobile = ua.match(/iOS/) || ua.match(/Android/);
+  body.classList.toggle('ua-mobile', mobile);
+  body.classList.toggle('ua-desktop', !mobile);
+  body.classList.toggle('ua-mac', ua.match(/Macintosh/));
+  body.classList.toggle('ua-win', ua.match(/Windows/));
+})(document.body, navigator.userAgent);
+</script>
+
