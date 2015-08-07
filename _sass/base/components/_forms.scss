@@ -43,7 +43,7 @@ label {
 
 textarea,
 #{$all-text-inputs},
-select[multiple=multiple] {
+select {
   box-sizing: border-box;
   @include font-size(1);
   @include placeholder {
@@ -173,18 +173,12 @@ input[type="file"] {
 select {
   @include appearance(none);
   width: 100%;
-  background-image: url('../img/angle-down.png');
-  background-repeat: no-repeat;
-  background-position: 99% 50%;
-  background-size: 2rem;
   background-color: #fff;
   border: 1px solid $form-border-color;
   border-radius: $form-border-radius;
   color: $dark-gray;
   margin-bottom: 1em;
-  overflow: hidden;
   padding: 0.5em 2rem 0.5em 0.8rem;
-  text-overflow: ellipsis;
   white-space: nowrap;
 
   &:focus {
@@ -196,6 +190,24 @@ select {
   &::-ms-expand {
     display: none;
   }
+
+}
+
+select[multiple] {
+  padding: 0;
+
+  option {
+    padding: 0.5em 0.8rem;
+  }
+}
+
+select:not([multiple]) {
+  background-image: url('../img/angle-down.png');
+  background-repeat: no-repeat;
+  background-position: 99% 50%;
+  background-size: 2rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 input[type=number]::-webkit-inner-spin-button, 
