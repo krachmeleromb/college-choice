@@ -3,6 +3,15 @@
   action="{{ site.baseurl }}/search/" method="GET">
   {% capture common_input_attributes %}autocomplete="off" autocorrect="off" autocapitalize="off"{% endcapture %}
 
+  {% capture keyboard_help %}
+  <div class="u-help show-desktop">
+    Press the
+    <span class="show-mac">&#x2318; (command)</span>
+    <span class="show-win">&#8963; (control)</span>
+    key to select multiple values
+  </div>
+  {% endcapture %}
+
   <div class="container search-form-intro">
 
     <legend>Find Schools By:</legend>
@@ -99,32 +108,31 @@
 
           <label for="select-state">
             Select one or more states
+            {{ keyboard_help }}
+            <select name="state" id="select-state" multiple="multiple">
+              {% for state in site.data.states|sort('name') %}
+              <option value="{{ state.abbr }}">{{ state.name }}</option>
+              {% endfor %}
+            </select>
           </label>
 
-          <multi-select>
-            <div class="u-group_inline u-group_inline-left">
-              <select name="state">
-                <option value=""></option>
-                {% for state in site.data.states|sort('name') %}
-                <option value="{{ state.abbr }}">{{ state.name }}</option>
-                {% endfor %}
-              </select>
-            </div>
-            <div class="u-group_inline u-group_inline-right u-nowrap">
-              <button class="button button-add">
-                Add State
-              </button>
-              <button class="button button-remove">
-                &times;
-              </button>
-            </div>
-          </multi-select>
+          <!--
+          <div class="u-group_inline u-group_inline-right u-nowrap">
+            <button class="button button-add">
+              Add State
+            </button>
+            <button class="button button-remove">
+              &times;
+            </button>
+          </div>
+          -->
 
         </div>
 
-        <label for="select-region">Select a region
-          <select name="region" id="select-region">
-            <option value=""></option>
+        <label for="select-region">
+          Select a region
+          {{ keyboard_help }}
+          <select name="region" id="select-region" multiple="multiple" size="{{ site.data.regions|size() }}">
             {% for region in site.data.regions|sort('name') %}
             <option value="{{ region.id }}" data-states="{{ region.states }}">{{ region.name }}</option>
             {% endfor %}
