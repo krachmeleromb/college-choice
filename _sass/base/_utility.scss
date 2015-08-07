@@ -258,3 +258,15 @@ ol.decimal,
 .u-lower {
   margin-bottom: -5em !important;
 }
+
+.ua-desktop .show-mobile,
+.ua-mobile .show-desktop,
+.ua-mac .show-win,
+.ua-win .show-mac {
+  display: none;
+}
+
+.u-help {
+  color: $dark-gray;
+  font-weight: normal;
+}
