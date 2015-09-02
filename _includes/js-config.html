@@ -18,6 +18,19 @@
    * `men_only` are top-level properties of each school API response
    * object.
    */
-  picc.SPECIAL_DESIGNATIONS = ({{ site.data.special_designations|jsonify }});
+  picc.SPECIAL_DESIGNATIONS = ({{ site.data.special_designations|jsonify }}) || {};
+
+  /*
+   * The program areas list is used to generate human-friendly names from the
+   * program offering and percentage objects that come back from the API under
+   * the fields designated by `picc.fields.PROGRAM_OFFERED` and
+   * `picc.fields.PROGRAM_PERCENTAGE`, respectively.
+   */
+  picc.PROGRAM_AREAS = ({{ site.data.programs|jsonify }}) || [];
+  // generate a mapping of {key: label} from the list of {key, label} objects
+  picc.PROGRAM_AREAS_BY_ID = picc.PROGRAM_AREAS.reduce(function(map, d) {
+    map[d.key] = d.label;
+    return map;
+  }, {});
   </script>
 
