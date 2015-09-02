@@ -950,9 +950,13 @@ picc.school.directives = (function() {
         });
     },
 
+    /*
+    // XXX this isn't used in the school templates right now,
+    // and removing it will speed up rendering
     num_available_programs: format.number(function(d) {
       return access.programAreas(d).length;
     }),
+    */
 
     popular_programs: function(d) {
       var areas = access.programAreas(d);
