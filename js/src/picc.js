@@ -971,10 +971,13 @@ picc.school.directives = (function() {
         .slice(0, 5);
     },
 
+    /*
+    // XXX this is unused on the front end right now
     age_entry: function(d) {
       var age = picc.access(fields.AGE_ENTRY)(d);
       return age ? age : NA;
     },
+    */
 
     more_link: {
       '@href': href
