@@ -707,29 +707,23 @@ picc.access.specialDesignations = function(d) {
  *                  `percent` (a decimal number or string representing its
  *                  share of student enrollment) properties.
  */
-picc.access.programAreas = function(d, metadata) {
-  if (!metadata) metadata = d.metadata;
-  if (!metadata || !metadata.dictionary) return [];
-
-  var dictionary = metadata.dictionary;
-  var field = picc.fields.PROGRAM_PERCENTAGE;
+picc.access.programAreas = function(d, field) {
+  var lookup = picc.PROGRAM_AREAS_BY_ID || {};
+  if (!field) field = picc.fields.PROGRAM_OFFERED;
   var programs = picc.access(field)(d);
   // remove the year prefix
   field = field.replace(/^\d+\./, '');
   return Object.keys(programs || {})
     .map(function(key) {
       var value = programs[key];
-      var dictKey = [field, key].join('.');
-      var name = dictionary[dictKey]
-        ? (dictionary[dictKey].label || key)
-        : key;
+      var name = lookup[key] || key;
       return {
         program: name,
-        percent: value
+        value: value
       };
     })
     .filter(function(d) {
-      return +d.percent > 0;
+      return +d.value > 0;
     });
 };
 
@@ -963,11 +957,10 @@ picc.school.directives = (function() {
     */
 
     popular_programs: function(d) {
-      var areas = access.programAreas(d);
+      var areas = access.programAreas(d, fields.PROGRAM_PERCENTAGE);
       if (areas.length) {
-        var total = d3.sum(areas, picc.access('percent'));
         areas.forEach(function(d) {
-          d.value = +d.percent / total;
+          d.value = +d.value;
           d.percent = percent(d.value);
         });
       }
