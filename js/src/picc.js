@@ -951,11 +951,15 @@ picc.school.directives = (function() {
     },
 
     /*
-    // XXX this isn't used in the school templates right now,
-    // and removing it will speed up rendering
+    // XXX these two directives aren't used in the school templates right now,
+    // and removing them will speed up rendering -- @shawnbot
     num_available_programs: format.number(function(d) {
       return access.programAreas(d).length;
     }),
+
+    programs_plural: format.plural(function(d) {
+      return access.programAreas(d).length;
+    }, 'Program'),
     */
 
     popular_programs: function(d) {
@@ -973,10 +977,6 @@ picc.school.directives = (function() {
         })
         .slice(0, 5);
     },
-
-    programs_plural: format.plural(function(d) {
-      return access.programAreas(d).length;
-    }, 'Program'),
 
     age_entry: function(d) {
       var age = picc.access(fields.AGE_ENTRY)(d);
